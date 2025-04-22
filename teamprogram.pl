@@ -7,10 +7,10 @@ open(my $data, '<', $file) or die;
 
 while (my $line = <$data>) {
         chomp $line;
-        my @words = split ", ", $line;
+        my @items = split ", ", $line;
 
         #Replace this code below to make the program more complex.
-        foreach my $i (@words) {
+        foreach my $i (@items) {
                 print "$i ";
         }
         print "\n"
