@@ -3,6 +3,58 @@ code {
     color: white;
 }
 
+body {
+    display: flex;
+    flex-direction: column;
+    padding: 0px;
+    margin: 0px;
+}
+
+
+.header {
+    height: 150px;
+    display: flex;
+    justify-content: space-between;
+    background-color: #1f2937;
+    align-items: center;
+    padding-left: 225px;
+    padding-right: 225px;
+}
+
+.left-header {
+    font-size: 24px;
+    color: #f9faf8;
+}
+
+.left-header img {
+    width 100px;
+    height: 100px;
+}
+
+.right-header {
+    flex: 1;
+}
+
+.right-header ul {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.header li,
+.header a:link {
+    display: inline;
+    font-size: 18px;
+    color: #e5e7eb;
+    margin: 0;
+    padding: 0;
+}
+
+.header a:link {
+    text-decoration: none;
+    margin-left: 10px;
+}
+
 .container {
     width:max-content;
     grid-column: auto;
