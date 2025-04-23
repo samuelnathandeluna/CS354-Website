@@ -11,7 +11,8 @@ body {
 
 
 .header {
-    height: 150px;
+    height: 125px;
+    min-height: 125px;
     display: flex;
     justify-content: space-between;
     background-color: #003656;
