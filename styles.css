@@ -1,6 +1,5 @@
-code {
-    background-color: rgb(51, 51, 51);
-    color: white;
+html, body {
+    height: 100%;
 }
 
 body {
@@ -67,6 +66,71 @@ body {
     margin: 0;
     padding: 0;
     text-decoration: none;
+}
+
+.title-card {
+    flex: 1;
+    display: flex;
+    background-color: #FFFFFF;
+    padding-left: 15%;
+    padding-right: 15%;
+    padding-top: 3%;
+    justify-content: center;
+    gap: 40px;
+}
+
+.title-card .title-card-img {
+    flex: 1 1 0;
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.title-card img {
+    max-height: 300px;
+    margin-right: 5%;
+    margin-top: 5%;
+}
+
+.left-title-card {
+    flex: 1 1 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.left-title-card .title {
+    color: #000000;
+    font-size: 72px;
+    font-weight: 800;
+    overflow-wrap: break-word;
+    margin-bottom: 3%;
+}
+
+.left-title-card .text {
+    color: #000000;
+    font-size: 42px;
+    margin-bottom: 3%;
+}
+
+.left-title-card .learn-more-button {
+    margin-right: auto;
+}
+
+button.title-card-learn-more {
+    color:#f9faf8;
+    font-size: 28px;
+    font-weight: 500;
+    background-color: #00719F;
+    border: 0px solid #000000;
+    border-radius: 5px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 8px;
+    padding-bottom: 6px;
+}
+
+button.title-card-learn-more:hover {
+    background-color: #003656;
+    cursor: pointer;
 }
 
 .container {
