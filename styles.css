@@ -133,7 +133,47 @@ button.title-card-learn-more:hover {
     cursor: pointer;
 }
 
-.container {
-    width:max-content;
-    grid-column: auto;
+.info-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-left: 15%;
+    padding-right: 15%;
+    padding-top: 20px;
+    padding-bottom: 60px;
+}
+
+.info-card .info-card-title {
+    margin:0;
+    color:#1f2937;
+    font-size: 64px;
+    font-weight: 800;
+}
+
+button.title-card-download,
+button.title-card-get-help {
+    color:#f9faf8;
+    font-size: 36px;
+    font-weight: 500;
+    background-color: #00719F;
+    border: 0px solid #000000;
+    border-radius: 5px;
+    padding-left: 60px;
+    padding-right: 60px;
+    padding-top: 24px;
+    padding-bottom: 20px;
+    margin-left: auto;
+}
+
+button.title-card-download:hover,
+button.title-card-get-help:hover {
+    background-color: #003656;
+    cursor: pointer;
+}
+
+.info-card .info-card-body {
+    margin:0;
+    margin-bottom: 40px;
+    color:#1f2937;
+    font-size: 36px;
 }
