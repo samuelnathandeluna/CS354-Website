@@ -195,3 +195,11 @@ button.title-card-get-help:hover {
     font-size: 64px;
     font-weight: 400;
 }
+
+.sample-card .sample-card-body {
+    margin:0;
+    margin-bottom: 40px;
+    color:#1f2937;
+    font-size: 36px;
+}
+
