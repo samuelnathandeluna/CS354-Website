@@ -178,3 +178,20 @@ button.title-card-get-help:hover {
     color:#1f2937;
     font-size: 36px;
 }
+
+.sample-card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-left: 15%;
+    padding-right: 15%;
+    padding-top: 20px;
+    padding-bottom: 60px;
+}
+
+.sample-card .sample-card-title {
+    margin:0;
+    color:#1f2937;
+    font-size: 64px;
+    font-weight: 400;
+}
