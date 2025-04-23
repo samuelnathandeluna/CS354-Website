@@ -15,15 +15,10 @@ body {
     height: 150px;
     display: flex;
     justify-content: space-between;
-    background-color: #1f2937;
+    background-color: #003656;
     align-items: center;
-    padding-left: 225px;
-    padding-right: 225px;
-}
-
-.left-header {
-    font-size: 24px;
-    color: #f9faf8;
+    padding-left: 15%;
+    padding-right: 15%;
 }
 
 .left-header img {
@@ -32,27 +27,46 @@ body {
 }
 
 .right-header {
+    display: flex;
     flex: 1;
+    height: 100%;
 }
 
 .right-header ul {
     display: flex;
-    justify-content: space-around;
+    flex: 1;
     align-items: center;
+    margin: 0;
 }
 
-.header li,
-.header a:link {
-    display: inline;
-    font-size: 18px;
+.right-header li:hover {
+    background-color: #00719F;
+}
+
+.header li {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
     color: #e5e7eb;
     margin: 0;
     padding: 0;
+    height: 100%;
 }
 
-.header a:link {
+.header a:link,
+.header a:visited {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    font-size: 32px;
+    color: #e5e7eb;
+    margin: 0;
+    padding: 0;
     text-decoration: none;
-    margin-left: 10px;
 }
 
 .container {
