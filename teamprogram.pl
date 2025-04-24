@@ -3,76 +3,64 @@ use strict;
 use warnings;
 
 use lib 'lib';
-use Cart;
+use Entry;
 
 # Main execution block
 sub main {
-        # Prompt user for input:
-        print   "==================================================\n"
-                ."Welcome to Shopping Cart Search!\n\n"
-                ."We maintain a database of personalized shopping carts.\n"
-                ."Use our interface to search for specific shopping carts,\n"
-                ."by their ID, name, and/or shopping items.\n\n" 
-                ."(Enter IDs, names, and/or items in a comma-separated list):\n";
-        my $query = <STDIN>;
+        # A list to store Entry hashes:
+        my @entries = ();
+
+        # Open the CSV file:
+        my $file = $ARGV[0] or die;
+        open(my $data, '<', $file) or die;
+
+	my $query = $ARGV[1] or die;
         chomp $query;
-        my @query_items = split ", ", $query;
+        my @filter = split ",", $query;
 
-        # Create a list of Cart hashes that satisfy the query items:
-        open(my $data, '<', "data.csv") or die;
-        my @carts = @{search_data($data, @query_items)};
-        close($data);
-
-        # Print total carts found:
-        print "\nTotal carts found: ".scalar @carts."\n"
-                ."++++++++++++++++++++++++++++++++++++++++++++++++++\n\n";
-        foreach my $c (@carts) {
-                my $cart = Cart->new($c);
-                print $cart->to_string();
-        }
-        print   "Thank you for using Shopping Cart Search. Until next time!"
-                ."\n==================================================\n";
-}
-
-sub search_data {
-        my ($data, @query_items) = @_;
-        my @carts = ();
-
-        # Read the data, look for Carts that satisfy query items:
+        # Read the CSV and store data as Entry hashes:
         while (my $line = <$data>) {
                 chomp $line;
                 my @items = split ", ", $line;
-                my $has_all = 1;
+                my $match = 1;
 
-                # Check if items has all query items:
-                my $has_q;
-                foreach my $q (@query_items) {
-                        $has_q = 0;
+                my $hasf;
+                foreach my $f (@filter) {
+                        $hasf = 0;
                         foreach my $i (@items) {
-                                if ($i eq $q) {
-                                        $has_q = 1;
+                                if ($i eq $f) {
+                                        $hasf = 1;
                                 }
                         }
-                        $has_all *= $has_q;
-                        if ($has_all == 0) {
+                        $match *= $hasf;
+                        if ($match == 0) {
                                 last;
                         }
                 }
 
-                # If items has all query items, add this cart:
-                if ($has_all) {
-                        my $new_id = shift(@items);
-                        my $new_name = shift(@items); 
-                        my @cart_hash = ({
-                                id => $new_id,
-                                name => $new_name,
-                                contents => \@items
+                if ($match) {
+                        my @entry_hash = ({
+                                id => $items[0],
+                                name => $items[1],
+                                cart => [ @items[2..$#items] ]
                         });
-                        push (@carts, @cart_hash);
+
+                        # Push this Entry hash to the list
+                        push (@entries, @entry_hash);
                 }
+
         }
 
-        return \@carts;
+	Entry->print_header();
+        foreach my $e (@entries) {
+                # Find an Entry hash, turn it into an Entry object:
+                my $entry = Entry->new($e);
+
+                # Print the Entry:
+		print $entry->to_string();
+                # print $entry->to_string();
+        }
+
 }
 
 main();
