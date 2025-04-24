@@ -203,3 +203,9 @@ button.title-card-get-help:hover {
     font-size: 36px;
 }
 
+.sample-card .sample-card-body img {
+    width: 100%; /* Ensures all images take up the same width */
+    max-width: 1000px; /* Set a maximum width for consistency */
+    height: auto; /* Maintains the aspect ratio */
+}
+
