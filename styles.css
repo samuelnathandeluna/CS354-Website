@@ -203,6 +203,30 @@ button.title-card-get-help:hover {
     font-size: 36px;
 }
 
+table {
+    flex: .75;
+    padding-top: 3%;
+    padding-right: 15%;
+    padding-left: 15%;
+    text-align: center;
+}
+
+th {
+    font-size: 52px;
+    font-weight: 600;
+}
+
+td.feature {
+    font-size: 52px;
+    font-weight: 600;
+}
+
+td.info {
+    font-size: 36px;
+    font-weight: 400;
+}
+
+
 .sample-card .sample-card-body img {
     width: 100%; /* Ensures all images take up the same width */
     max-width: 1000px; /* Set a maximum width for consistency */
