@@ -9,6 +9,11 @@ body {
     margin: 0px;
 }
 
+code {
+    font-size: 10px;
+    line-height: 8px;
+}
+
 
 .header {
     height: 125px;
@@ -201,6 +206,10 @@ button.title-card-get-help:hover {
     margin-bottom: 40px;
     color:#1f2937;
     font-size: 36px;
+}
+
+.sample-card .sample-card-code {
+    font-size: 12px;
 }
 
 table {
