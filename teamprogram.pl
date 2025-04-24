@@ -11,12 +11,16 @@ sub main {
         my @entries = ();
 
         # Open the CSV file:
-        my $file = $ARGV[0] or die;
-        open(my $data, '<', $file) or die;
+        my $file = $ARGV[0] or die "Error: Missing filename argument. Usage: $0 <filename> <query>\n";
+        open(my $data, '<', $file) or die "Error: Can't open file '$file': $!\n";
 
-	my $query = $ARGV[1] or die;
+	my $query = $ARGV[1] or die "Error: Missing query argument. Usage: $0 <filename> <query>\n";
         chomp $query;
         my @filter = split ",", $query;
+
+	if (@ARGV > 2) {
+		die "Error: Too many arguments provided. Usage: $0 <filename> <query>\n";
+	}
 
         # Read the CSV and store data as Entry hashes:
         while (my $line = <$data>) {
