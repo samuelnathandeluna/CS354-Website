@@ -23,22 +23,10 @@ sub get_name {
     return $self->{name};
 }
 
-# Set name of this Entry
-sub set_name {
-    my ($self, $new_name) = @_;
-    $self->{name} = $new_name;
-}
-
 # Get color of this Entry
 sub get_cart {
     my $self = shift;
     return $self->{cart};
-}
-
-# Set color of this Entry
-sub set_cart {
-    my ($self, $new_cart) = @_;
-    $self->{name} = $new_cart;
 }
 
 # Print report header
@@ -59,3 +47,4 @@ sub to_string {
 }
 
 1;
+
