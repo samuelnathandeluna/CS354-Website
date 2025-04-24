@@ -7,9 +7,7 @@ sub new {
     my ($class, $args) = @_;
     my $self = bless {  id => $args->{id},
                         name => $args->{name},
-                        color => $args->{color},
-                        food => $args->{food},
-                        month => $args->{month}
+                        cart => $args->{cart}
     }
 }
 
@@ -37,39 +35,13 @@ sub set_color {
     $self->{name} = $new_color;
 }
 
-# Get food of this Entry
-sub get_food {
-    my $self = shift;
-    return $self->{food};
-}
-
-# Set food of this Entry
-sub set_food {
-    my ($self, $new_food) = @_;
-    $self->{food} = $new_food;
-}
-
-# Get month of this Entry
-sub get_month {
-    my $self = shift;
-    return $self->{month};
-}
-
-# Set month of this Entry
-sub set_month {
-    my ($self, $new_food) = @_;
-    $self->{month} = $new_food;
-}
-
 # Return formatted string for Entry
 sub to_string {
     my $self = shift;
     return "Entry ID: $self->{id}\n"
                 ."====================\n"
                 ."Name:\t$self->{name}\n"
-                ."Color:\t$self->{color}\n"
-                ."Food:\t$self->{food}\n"
-                ."Month:\t$self->{month}\n"
+                ."Cart:\t", join(", ", @{ $self->{cart} }), "\n"
                 ."\n";
 }
 
