@@ -44,9 +44,7 @@ sub main {
                         my @entry_hash = ({
                                 id => $items[0],
                                 name => $items[1],
-                                color => $items[2],
-                                food => $items[3],
-                                month => $items[4]
+                                cart => [ @items[2..$#items] ]
                         });
 
                         # Push this Entry hash to the list
