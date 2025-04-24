@@ -7,7 +7,12 @@ use Entry;
 
 # Main execution block
 sub main {
-        
+        print   "Search for shopping carts\n" 
+                ."(Enter IDs, names, and/or items in a comma-separated list):\n";
+        my $query = <STDIN>;
+        chomp $query;
+        my @filter = split ", ", $query;
+
         # A list to store Entry hashes:
         my @entries = ();
 
@@ -19,25 +24,45 @@ sub main {
         while (my $line = <$data>) {
                 chomp $line;
                 my @items = split ", ", $line;
-                my @entry_hash = ({
-                        id => $items[0],
-                        name => $items[1],
-                        color => $items[2],
-                        food => $items[3],
-                        month => $items[4]
-                });
+                my $match = 1;
 
-                # Push this Entry hash to the list
-                push (@entries, @entry_hash);
+                my $hasf;
+                foreach my $f (@filter) {
+                        $hasf = 0;
+                        foreach my $i (@items) {
+                                if ($i eq $f) {
+                                        $hasf = 1;
+                                }
+                        }
+                        $match *= $hasf;
+                        if ($match == 0) {
+                                last;
+                        }
+                }
+
+                if ($match) {
+                        my @entry_hash = ({
+                                id => $items[0],
+                                name => $items[1],
+                                color => $items[2],
+                                food => $items[3],
+                                month => $items[4]
+                        });
+
+                        # Push this Entry hash to the list
+                        push (@entries, @entry_hash);
+                }
+
         }
 
-        # Find an Entry hash, turn it into an Entry object:
-        # (Hard-coded '2' as an example. We need to find a way to let the
-        # user specify what entries to display.)
-        my $entry = Entry->new($entries[2]);
+        foreach my $e (@entries) {
+                # Find an Entry hash, turn it into an Entry object:
+                my $entry = Entry->new($e);
 
-        # Print the Entry:
-        print $entry->to_string();
+                # Print the Entry:
+                print $entry->to_string();
+        }
+
 }
 
 main();
