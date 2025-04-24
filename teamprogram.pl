@@ -7,18 +7,16 @@ use Entry;
 
 # Main execution block
 sub main {
-        print   "Search for shopping carts\n" 
-                ."(Enter IDs, names, and/or items in a comma-separated list):\n";
-        my $query = <STDIN>;
-        chomp $query;
-        my @filter = split ", ", $query;
-
         # A list to store Entry hashes:
         my @entries = ();
 
         # Open the CSV file:
         my $file = $ARGV[0] or die;
         open(my $data, '<', $file) or die;
+
+	my $query = $ARGV[1] or die;
+        chomp $query;
+        my @filter = split ",", $query;
 
         # Read the CSV and store data as Entry hashes:
         while (my $line = <$data>) {
@@ -53,12 +51,14 @@ sub main {
 
         }
 
+	Entry->print_header();
         foreach my $e (@entries) {
                 # Find an Entry hash, turn it into an Entry object:
                 my $entry = Entry->new($e);
 
                 # Print the Entry:
-                print $entry->to_string();
+		print $entry->to_string();
+                # print $entry->to_string();
         }
 
 }

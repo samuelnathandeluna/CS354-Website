@@ -11,6 +11,12 @@ sub new {
     }
 }
 
+# Get id of this Entry
+sub get_id {
+    my $self = shift;
+    return $self->{id};
+}
+
 # Get name of this Entry
 sub get_name {
     my $self = shift;
@@ -24,25 +30,32 @@ sub set_name {
 }
 
 # Get color of this Entry
-sub get_color {
+sub get_cart {
     my $self = shift;
-    return $self->{color};
+    return $self->{cart};
 }
 
 # Set color of this Entry
-sub set_color {
-    my ($self, $new_color) = @_;
-    $self->{name} = $new_color;
+sub set_cart {
+    my ($self, $new_cart) = @_;
+    $self->{name} = $new_cart;
+}
+
+# Print report header
+sub print_header {
+    printf "%-6s %-10s %-s\n", "ID", "Name", "Cart";
+    print "-" x 40, "\n";
 }
 
 # Return formatted string for Entry
 sub to_string {
     my $self = shift;
-    return "Entry ID: $self->{id}\n"
-                ."====================\n"
-                ."Name:\t$self->{name}\n"
-                ."Cart:\t", join(", ", @{ $self->{cart} }), "\n"
-                ."\n";
+    return sprintf (
+		"%-6s %-10s %-s\n",
+		$self->get_id(),
+		$self->get_name(),
+                join(", ", @{ $self->get_cart() })
+	);
 }
 
 1;
